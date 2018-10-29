@@ -1,0 +1,33 @@
+{
+  "name": "simple-monitoring-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tslint --project . && tsc",
+    "watch": "cross-env NODE_ENV=development nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://fralec@github.com/vonbarnekowa/simple-monitoring-website.git"
+  },
+  "author": "vonbarnekowa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vonbarnekowa/simple-monitoring-website/issues"
+  },
+  "homepage": "https://github.com/vonbarnekowa/simple-monitoring-website#readme",
+  "dependencies": {
+    "koa": "^2.6.1",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.46",
+    "@types/koa-router": "^7.0.32",
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.5",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.3"
+  }
+}
