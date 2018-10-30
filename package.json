@@ -18,12 +18,23 @@
   },
   "homepage": "https://github.com/vonbarnekowa/simple-monitoring-website#readme",
   "dependencies": {
+    "handlebars": "^4.0.1",
     "koa": "^2.6.1",
-    "koa-router": "^7.4.0"
+    "koa-bodyparser": "^4.2.1",
+    "koa-passport": "^4.1.1",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.10.0",
+    "koa-views": "^6.1.4",
+    "passport-google-oauth": "^1.0.0"
   },
   "devDependencies": {
     "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^5.0.1",
+    "@types/koa-passport": "^4.0.2",
     "@types/koa-router": "^7.0.32",
+    "@types/koa-session": "^5.7.4",
+    "@types/koa-views": "^2.0.3",
+    "@types/passport-google-oauth": "^1.0.39",
     "cross-env": "^5.2.0",
     "nodemon": "^1.18.5",
     "ts-node": "^7.0.1",
