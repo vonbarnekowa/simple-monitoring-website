@@ -66,9 +66,9 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-app.use(views( 'src/views/', {
+app.use(views( 'views/', {
     map: {
-      html: 'handlebars',
+      html: 'nunjucks',
     },
   },
 ));

@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/vonbarnekowa/simple-monitoring-website#readme",
   "dependencies": {
-    "handlebars": "^4.0.1",
     "koa": "^2.6.1",
     "koa-bodyparser": "^4.2.1",
     "koa-logger-winston": "0.0.2",
@@ -29,6 +28,7 @@
     "koa-views": "^6.1.4",
     "mongoose": "^5.3.7",
     "muicss": "^0.9.41",
+    "nunjucks": "^3.1.3",
     "passport-google-oauth": "^1.0.0",
     "winston": "^3.1.0"
   },

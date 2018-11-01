@@ -19,7 +19,7 @@ const isUnauthenticated = (ctx: Context) => {
 };
 
 router.get(Constants.HOME_URL, isUnauthenticated, async (ctx) => {
-  await ctx.render('home.handlebars');
+  await ctx.render('home.njk');
 });
 
 router.get(Constants.LOGIN_GOOGLE_CALLBACK_URL, isUnauthenticated,
@@ -30,7 +30,7 @@ router.get(Constants.LOGIN_GOOGLE_URL, isUnauthenticated,
   passport.authenticate('google', {scope: ['email']}));
 
 router.get(Constants.DASHBOARD_URL, isAuthenticated, async (ctx) => {
-  await ctx.render('home.handlebars');
+  await ctx.render('home.njk');
 });
 
 export const routes = router.routes();
