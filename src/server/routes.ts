@@ -1,30 +1,36 @@
 import * as Router from 'koa-router';
 import * as passport from 'passport';
 
+import {Context} from 'koa';
+import {Constants} from '../contants';
+
 const router = new Router();
 
-router.get('/', async (ctx) => {
+const isAuthenticated = (ctx: Context) => {
+  if (ctx.isUnauthenticated()) {
+    return ctx.redirect(Constants.LOGIN_URL);
+  }
+};
+
+const isUnauthenticated = (ctx: Context) => {
+  if (ctx.isAuthenticated()) {
+    return ctx.redirect(Constants.DASHBOARD_URL);
+  }
+};
+
+router.get(Constants.HOME_URL, isUnauthenticated, async (ctx) => {
   await ctx.render('home.handlebars');
 });
 
-/*router.get('/login/google/callback', async (ctx) => {
-    return passport.authenticate('google', {failureRedirect: '/login'}, (err, user, info, status) => {
-      if (err) {
-        console.error(err);
-      }
-      ctx.redirect('/');
-    })(ctx);
-});*/
-router.get('/login/google/callback',
-  passport.authenticate('google', {successRedirect: '/', failureRedirect: '/login'}));
+router.get(Constants.LOGIN_GOOGLE_CALLBACK_URL, isUnauthenticated,
+  passport.authenticate('google',
+    {successRedirect: Constants.DASHBOARD_URL, failureRedirect: Constants.LOGIN_URL}));
 
-router.get('/login/google', passport.authenticate('google', {scope: ['email']}));
+router.get(Constants.LOGIN_GOOGLE_URL, isUnauthenticated,
+  passport.authenticate('google', {scope: ['email']}));
 
-router.get('/dashboard', async (ctx) => {
-  if (ctx.isUnauthenticated()) {
-    ctx.redirect('/');
-    return;
-  }
+router.get(Constants.DASHBOARD_URL, isAuthenticated, async (ctx) => {
+  await ctx.render('home.handlebars');
 });
 
 export const routes = router.routes();

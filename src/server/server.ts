@@ -9,6 +9,7 @@ import * as mongoose from 'mongoose';
 import * as GoogleOauth from 'passport-google-oauth';
 
 import {Profile} from 'passport';
+import {Constants} from '../contants';
 import {config} from './config';
 import {log} from './log';
 import {routes} from './routes';
@@ -19,7 +20,7 @@ const app = new Koa();
 
 app.keys = ['secret', 'key'];
 
-mongoose.connect('mongodb://localhost/smw', {useNewUrlParser: true}, (err: mongoose.Error) => {
+mongoose.connect(Constants.MONGODB_CONNECT_URL, {useNewUrlParser: true}, (err: mongoose.Error) => {
   if (err) {
     return log.error(err);
   }
@@ -33,7 +34,7 @@ const googleApiInfo = JSON.parse(contents.toString());
 passport.use(new GoogleOauth.OAuth2Strategy({
     clientID: googleApiInfo.web.client_id,
     clientSecret: googleApiInfo.web.client_secret,
-    callbackURL: 'http://localhost:3030/login/google/callback',
+    callbackURL: Constants.LOGIN_GOOGLE_CALLBACK_URL,
     passReqToCallback: true,
   }, ((req: null, accessToken: string, refreshToken: string, profile: Profile,
        done: (err: any, user?: any) => void) => {
