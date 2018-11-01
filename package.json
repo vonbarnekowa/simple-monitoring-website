@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tslint --project . && tsc",
+    "watch-css": "node-sass -w ./style/ -o ./public/css/ --output-style compressed",
     "watch": "cross-env NODE_ENV=development nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server/server.ts"
   },
   "repository": {
@@ -27,6 +28,7 @@
     "koa-session": "^5.10.0",
     "koa-views": "^6.1.4",
     "mongoose": "^5.3.7",
+    "muicss": "^0.9.41",
     "passport-google-oauth": "^1.0.0",
     "winston": "^3.1.0"
   },
@@ -42,6 +44,7 @@
     "@types/passport-google-oauth": "^1.0.39",
     "@types/winston": "^2.4.4",
     "cross-env": "^5.2.0",
+    "node-sass": "^4.9.4",
     "nodemon": "^1.18.5",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
