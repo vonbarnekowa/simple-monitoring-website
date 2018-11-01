@@ -197,3 +197,6 @@ typings/
 
 # ts build output
 dist/*
+
+# API credentials
+google_api.json
