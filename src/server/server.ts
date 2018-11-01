@@ -1,34 +1,75 @@
+import * as fs from 'fs';
 import * as Koa from 'koa';
-import * as views from 'koa-views';
 import * as bodyparser from 'koa-bodyparser';
-import * as session from 'koa-session';
+import * as logger from 'koa-logger-winston';
 import * as passport from 'koa-passport';
-import * as GoogleStrategy from 'passport-google-oauth';
+import * as session from 'koa-session';
+import * as views from 'koa-views';
+import * as mongoose from 'mongoose';
+import * as GoogleOauth from 'passport-google-oauth';
 
-import { config } from './config';
-import { logger } from './logging';
-import { routes } from './routes';
+import {Profile} from 'passport';
+import {config} from './config';
+import {log} from './log';
+import {routes} from './routes';
+
+import {UsersSchema} from '../schemas/Users';
 
 const app = new Koa();
 
-passport.use(new GoogleStrategy.OAuth2Strategy({
-    clientID: '',
-    clientSecret: '',
-    callbackURL: '/login/google/callback',
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // TODO
-    /*User.findOrCreate(..., function (err, user) {
-      done(err, user);
-    });*/
+app.keys = ['secret', 'key'];
+
+mongoose.connect('mongodb://localhost/smw', {useNewUrlParser: true}, (err: mongoose.Error) => {
+  if (err) {
+    return log.error(err);
   }
+});
+
+const User = mongoose.model('users', UsersSchema);
+
+const contents = fs.readFileSync('google_api.json');
+const googleApiInfo = JSON.parse(contents.toString());
+
+passport.use(new GoogleOauth.OAuth2Strategy({
+    clientID: googleApiInfo.web.client_id,
+    clientSecret: googleApiInfo.web.client_secret,
+    callbackURL: 'http://localhost:3030/login/google/callback',
+    passReqToCallback: true,
+  }, ((req: null, accessToken: string, refreshToken: string, profile: Profile,
+       done: (err: any, user?: any) => void) => {
+
+    User.findOne({email: profile.emails[0].value}, (err: any, user: any) => {
+      if (err) {
+        return log.error(err);
+      }
+
+      if (user) {
+        done(err, user);
+        log.info('User ' + user.email + ' successfully connected');
+      }
+    });
+  }),
 ));
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    if (err) {
+      return log.error(err);
+    }
+
+    done(err, user);
+  });
+});
 
 app.use(views( 'src/views/', {
     map: {
-      html: 'handlebars'
-    }
-  }
+      html: 'handlebars',
+    },
+  },
 ));
 
 app.use(bodyparser());
@@ -38,7 +79,7 @@ app.use(session({}, app));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(logger);
+app.use(logger(log));
 app.use(routes);
 
 app.listen(config.port);
