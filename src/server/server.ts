@@ -7,6 +7,7 @@ import * as session from 'koa-session';
 import * as views from 'koa-views';
 import * as mongoose from 'mongoose';
 import * as GoogleOauth from 'passport-google-oauth';
+import * as serve from 'koa-static';
 
 import {Profile} from 'passport';
 import {Constants} from '../contants';
@@ -79,13 +80,11 @@ app.use(views('views/templates', {
   },
 ));
 
+app.use(serve('./public'));
 app.use(bodyparser());
-
 app.use(session({}, app));
-
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(logger(log));
 app.use(routes);
 
