@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "_head.njk" %}
+    </head>
+    <body>
+        {% include "./partials/_header.njk" %}
+
+        <div id="content-wrapper" class="mui--text-center">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% include "./partials/_footer.njk" %}
+    </body>
+</html>
