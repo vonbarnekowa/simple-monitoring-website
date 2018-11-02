@@ -31,8 +31,13 @@ router.get(Constants.LOGIN_GOOGLE_CALLBACK_URL, isUnauthenticated,
 router.get(Constants.LOGIN_GOOGLE_URL, isUnauthenticated,
   passport.authenticate('google', {scope: ['email']}));
 
+router.get(Constants.LOGOUT_URL, isAuthenticated, async (ctx) => {
+  ctx.logout();
+  ctx.redirect(Constants.HOME_URL);
+});
+
 router.get(Constants.DASHBOARD_URL, isAuthenticated, async (ctx) => {
-  await ctx.render('dashboard');
+  await ctx.render('dashboard', {user123: "test"});
 });
 
 export const routes = router.routes();

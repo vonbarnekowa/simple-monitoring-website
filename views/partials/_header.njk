@@ -5,7 +5,11 @@
                 <td class="mui--text-title">Simple monitoring</td>
                 <td class="mui--text-right">
                     <ul class="mui-list--inline mui--text-body2">
-                        <li><a class="mui-btn" href="/login/google">Login with Google</a></li>
+                        {% if user %}
+                            <li><a class="mui-btn" href="/logout">Logout</a></li>
+                        {% else %}
+                            <li><a class="mui-btn" href="/login/google">Login with Google</a></li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
