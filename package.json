@@ -27,6 +27,7 @@
     "koa-session": "^5.10.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
+    "materialize-css": "^1.0.0",
     "mongoose": "^5.3.7",
     "muicss": "^0.9.41",
     "nunjucks": "^3.1.3",
