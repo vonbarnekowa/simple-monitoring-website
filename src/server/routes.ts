@@ -37,7 +37,7 @@ router.get(Constants.LOGOUT_URL, isAuthenticated, async (ctx) => {
 });
 
 router.get(Constants.DASHBOARD_URL, isAuthenticated, async (ctx) => {
-  await ctx.render('dashboard', {user123: 'test'});
+  await ctx.render('dash');
 });
 
 export const routes = router.routes();
