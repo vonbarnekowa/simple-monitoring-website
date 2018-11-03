@@ -200,3 +200,6 @@ dist/*
 
 # API credentials
 google_api.json
+
+# generated css
+public/css/*
