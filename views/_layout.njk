@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {% include "_head.njk" %}
-    </head>
-    <body>
-        {% include "./partials/_header.njk" %}
-
-        <div class="mui-container">
-            <div class="mui-container-fluid">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
-
-        {% include "./partials/_footer.njk" %}
-        <script src="/scripts/materialize.min.js"></script>
-        <script src="/scripts/init.js"></script>
-    </body>
+  <head>
+    {% include "_head.njk" %}
+  </head>
+  <body>
+    {% include "./partials/_header.njk" %}
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+    {% include "./partials/_footer.njk" %}
+    <script src="/scripts/materialize.min.js"></script>
+    <script src="/scripts/init.js"></script>
+  </body>
 </html>
