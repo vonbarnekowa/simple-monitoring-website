@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tslint --project . && tsc",
-    "watch-css": "node-sass -w ./style/ -o ./public/css/ --output-style compressed",
+    "watch-css": "node-sass --recursive -w ./style/ -o ./public/css/ --output-style compressed",
     "watch": "cross-env NODE_ENV=development nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server/server.ts"
   },
   "repository": {
