@@ -7,6 +7,6 @@ node_js:
   - 7
   - 6
 install:
-  - cd simple-monitoring-website && npm install && cd ..
+  - cd simple-monitoring-website && npm install
 script:
   - cd simple-monitoring-website && npm run build
