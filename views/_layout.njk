@@ -6,9 +6,11 @@
     <body>
         {% include "./partials/_header.njk" %}
 
-        <div id="content-wrapper" class="mui--text-center">
-            {% block content %}
-            {% endblock %}
+        <div class="mui-container">
+            <div class="mui-container-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
 
         {% include "./partials/_footer.njk" %}

@@ -1,18 +1,20 @@
-<header class="mui-appbar mui--z1">
-    <div class="mui-container">
-        <table>
-            <tr class="mui--appbar-height">
-                <td class="mui--text-title">Simple monitoring</td>
-                <td class="mui--text-right">
-                    <ul class="mui-list--inline mui--text-body2">
-                        {% if user %}
-                            <li><a class="mui-btn" href="/logout">Logout</a></li>
-                        {% else %}
-                            <li><a class="mui-btn" href="/login/google">Login with Google</a></li>
-                        {% endif %}
-                    </ul>
-                </td>
-            </tr>
-        </table>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Simple monitoring</a>
+        <ul class="right hide-on-med-and-down">
+            {% if user %}
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login/google">Login with Google</a></li>
+            {% endif %}
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+            {% if user %}
+                <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login/google">Login with Google</a></li>
+            {% endif %}
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
-</header>
+</nav>
