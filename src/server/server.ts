@@ -4,10 +4,10 @@ import * as bodyparser from 'koa-bodyparser';
 import * as logger from 'koa-logger-winston';
 import * as passport from 'koa-passport';
 import * as session from 'koa-session';
+import * as serve from 'koa-static';
 import * as views from 'koa-views';
 import * as mongoose from 'mongoose';
 import * as GoogleOauth from 'passport-google-oauth';
-import * as serve from 'koa-static';
 
 import {Profile} from 'passport';
 import {Constants} from '../contants';
