@@ -1,9 +1,16 @@
 {% extends "_layout.njk" %}
 
 {% block content %}
-  <div class="container">
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large waves-effect waves-light deep-purple darken-1"><i class="material-icons">add</i></a>
+  {% if monitors.size > 0 %}
+  {% else %}
+    <div class="row center-align row--mg0">
+      <span class="emoji grey-text">\(o_o)/</span>
     </div>
+    <div class="row center-align">
+      <span class="emoji--text grey-text">Nothing to monitor</span>
+    </div>
+  {% endif %}
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light deep-purple darken-1"><i class="material-icons">add</i></a>
   </div>
 {% endblock %}
