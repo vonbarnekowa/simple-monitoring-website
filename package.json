@@ -44,6 +44,7 @@
     "@types/koa-static": "^4.0.0",
     "@types/koa-views": "^2.0.3",
     "@types/mongoose": "^5.2.20",
+    "@types/node": "^10.12.2",
     "@types/passport-google-oauth": "^1.0.39",
     "@types/winston": "^2.4.4",
     "cross-env": "^5.2.0",
