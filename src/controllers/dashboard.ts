@@ -13,6 +13,8 @@ export const dashboard = async (ctx: Koa.Context) => {
       log.error(err);
     })
     .then(async (monitors) => {
-      await ctx.render('dash', {monitors: monitors});
+      await ctx.render('dash', {monitors, success: ctx.session.success, error: ctx.session.error});
+      ctx.session.success = null;
+      ctx.session.error = null;
     });
 };
