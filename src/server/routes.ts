@@ -22,7 +22,7 @@ const isUnauthenticated = (ctx: Context, next: () => void) => {
 };
 
 router.get(Constants.HOME_URL, isUnauthenticated, async (ctx) => {
-  await ctx.render('home');
+  await ctx.render('home', {error: ctx.session.error});
 });
 
 // Authentication

@@ -37,18 +37,21 @@ passport.use(new GoogleOauth.OAuth2Strategy({
     clientSecret: googleApiInfo.web.client_secret,
     callbackURL: Constants.LOGIN_GOOGLE_CALLBACK_URL,
     passReqToCallback: true,
-  }, ((req: null, accessToken: string, refreshToken: string, profile: Profile,
+  }, ((req: any, accessToken: string, refreshToken: string, profile: Profile,
        done: (err: any, user?: any) => void) => {
 
     User.findOne({email: profile.emails[0].value}, (err: any, user: any) => {
       if (err) {
-        return log.error(err);
+        log.error(err);
+        return done(err, false);
       }
 
       if (user) {
-        done(err, user);
         log.info('User ' + user.email + ' successfully connected');
+        return done(err, user);
       }
+      req.session.error = 'You haven\'t access to the administration';
+      return done(err, false);
     });
   }),
 ));
