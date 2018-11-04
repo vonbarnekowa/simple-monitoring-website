@@ -4,6 +4,7 @@ import {Context} from 'koa';
 import {Constants} from '../contants';
 import {login, loginCallback, logout} from '../controllers/authentication';
 import {dashboard} from '../controllers/dashboard';
+import {home} from '../controllers/home';
 import {addMonitor, deleteMonitor, updateMonitor} from '../controllers/monitor';
 
 const router = new Router();
@@ -22,9 +23,7 @@ const isUnauthenticated = (ctx: Context, next: () => void) => {
   return ctx.redirect(Constants.DASHBOARD_URL);
 };
 
-router.get(Constants.HOME_URL, isUnauthenticated, async (ctx) => {
-  await ctx.render('home', {error: ctx.session.error});
-});
+router.get(Constants.HOME_URL, isUnauthenticated, home);
 
 router.get(Constants.DASHBOARD_URL, isAuthenticated, dashboard);
 

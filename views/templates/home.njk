@@ -1,4 +1,18 @@
 {% extends "_layout.njk" %}
 
 {% block content %}
+  {% if monitors.length > 0 %}
+    <ul class="collapsible expandable">
+      {% for monitor in monitors %}
+        {% include "partials/_monitor.njk" %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="row center-align row--mg0">
+      <span class="emoji grey-text">\(o_o)/</span>
+    </div>
+    <div class="row center-align">
+      <span class="emoji--text grey-text">No monitor is public</span>
+    </div>
+  {% endif %}
 {% endblock %}
