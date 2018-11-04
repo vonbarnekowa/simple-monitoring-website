@@ -14,4 +14,13 @@ export class Constants {
 
   // Mongodb
   public static MONGODB_CONNECT_URL = 'mongodb://localhost/smw';
+
+  // Messages
+  public static MONITOR_ADD_SUCCESS = 'Monitor added successfully';
+  public static MONITOR_ADD_ERROR = 'Can\'t add this monitor';
+  public static MONITOR_UPDATE_SUCCESS = 'Monitor updated successfully';
+  public static MONITOR_UPDATE_ERROR = 'Can\'t update this monitor';
+  public static MONITOR_DELETE_SUCCESS = 'Monitor deleted successfully';
+  public static MONITOR_DELETE_ERROR = 'Can\'t delete this monitor';
+  public static FORM_ERROR_MESSAGE = 'The form wasn\'t correct';
 }
