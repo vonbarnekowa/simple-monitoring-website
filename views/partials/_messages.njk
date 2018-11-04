@@ -1,0 +1,14 @@
+{%  if error %}
+  <div class="card red darken-1">
+    <div class="card-content white-text">
+      {{ error }}
+    </div>
+  </div>
+{% endif %}
+{%  if success %}
+  <div class="card green darken-1">
+    <div class="card-content white-text">
+      {{ success }}
+    </div>
+  </div>
+{% endif %}

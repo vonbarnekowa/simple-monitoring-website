@@ -6,6 +6,7 @@
   <body>
     {% include "./partials/_header.njk" %}
     <div class="container">
+      {% include "partials/_messages.njk" %}
       {% block content %}
       {% endblock %}
     </div>
