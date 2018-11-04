@@ -8,6 +8,10 @@ export class Constants {
 
   public static DASHBOARD_URL = '/dashboard';
 
+  public static ADD_MONITOR_URL = '/monitor/add';
+  public static UPDATE_MONITOR_URL = '/monitor/:id/update';
+  public static DELETE_MONITOR_URL = '/monitor/:id/delete';
+
   // Mongodb
   public static MONGODB_CONNECT_URL = 'mongodb://localhost/smw';
 }
