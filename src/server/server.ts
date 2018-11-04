@@ -93,6 +93,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(logger(log));
 app.use(routes);
+app.use(bodyparser());
 
 app.listen(config.port);
 
