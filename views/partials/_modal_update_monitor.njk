@@ -1,0 +1,43 @@
+<div id="modal-update-monitor-{{ monitor._id }}" class="modal">
+  <form action="/monitor/{{ monitor._id }}/update" method="post">
+    <div class="modal-content">
+      <h4>Update {{ monitor.name }}</h4>
+      <div class="input-field">
+        <input id="name" name="name" type="text" value="{{ monitor.name }}" class="input-field-purple">
+        <label class="deep-purple-text darken-1" for="name">Name</label>
+      </div>
+      <div class="input-field">
+        <input id="address" name="address" type="text" value="{{ monitor.address }}" class="input-field-purple">
+        <label class="deep-purple-text darken-1" for="address">Address</label>
+      </div>
+      <div class="input-field">
+        <label class="range-label deep-purple-text darken-1" for="frequency">Checks per day</label>
+        <select id="frequency" name="frequency" class="input-field-purple browser-default">
+          <option value="1" {% if monitor.frequency == 1 %} selected{% endif %}>Every 24h</option>
+          <option value="2" {% if monitor.frequency == 2 %} selected{% endif %}>Every 12h</option>
+          <option value="4" {% if monitor.frequency == 4 %} selected{% endif %}>Every 6h</option>
+          <option value="8" {% if monitor.frequency == 8 %} selected{% endif %}>Every 3h</option>
+          <option value="16" {% if monitor.frequency == 16 %} selected{% endif %}>Every 90'</option>
+          <option value="32" {% if monitor.frequency == 32 %} selected{% endif %}>Every 45'</option>
+          <option value="48" {% if monitor.frequency == 48 %} selected{% endif %}>Every 30'</option>
+          <option value="96" {% if monitor.frequency == 96 %} selected{% endif %}>Every 15'</option>
+          <option value="144" {% if monitor.frequency == 144 %} selected{% endif %}>Every 10'</option>
+          <option value="288" {% if monitor.frequency == 288 %} selected{% endif %}>Every 5'</option>
+          <option value="1440" {% if monitor.frequency == 1440 %} selected{% endif %}>Every 1'</option>
+        </select>
+      </div>
+      <div class="input-field">
+        <div class="switch">
+          <label>
+            Is public
+            <input type="checkbox" name="is_public" {% if monitor.is_public == true %} checked{% endif %}>
+            <span class="lever"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="waves-effect btn-flat deep-purple darken-1 white-text">Update</button>
+    </div>
+  </form>
+</div>

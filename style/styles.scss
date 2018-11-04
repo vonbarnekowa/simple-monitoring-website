@@ -1,3 +1,5 @@
+@import "../node_modules/materialize-css/sass/components/color-variables";
+
 @import "layout/_header.scss";
 @import "layout/_footer.scss";
 
@@ -5,4 +7,27 @@
 
 .row--mg0 {
   margin: 0;
+}
+
+.collapsible-header {
+  word-break: break-word;
+}
+
+.collapsible-header-right {
+  margin-left: auto;
+  align-self: center;
+  display: inherit;
+}
+
+.input-field label {
+  left: 0 !important;
+}
+
+.input-field-purple {
+  border-bottom: 1px solid color('deep-purple', 'darken-1') !important;
+  box-shadow: none !important;
+}
+
+.range-label {
+  display: contents;
 }

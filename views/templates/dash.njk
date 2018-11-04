@@ -1,7 +1,39 @@
 {% extends "_layout.njk" %}
 
 {% block content %}
-  {% if monitors.size > 0 %}
+  {% if monitors.length > 0 %}
+    <ul class="collapsible expandable">
+      {% for monitor in monitors %}
+        <li>
+          <div class="collapsible-header">{{ monitor.name }}<div class="collapsible-header-right">
+              {% if monitor.status == 0 %}
+                <i class="material-icons light-green-text accent-3">check_circle_outline</i>
+              {% elseif monitor.status == 2 %}
+                <i class="material-icons red-text darken-1">highlight_off</i>
+              {% else %}
+                <i class="material-icons orange-text darken-4">help_outline</i>
+              {% endif %}
+              <i class="dropdown-trigger collapsible-dropdown-trigger blue-grey-text lighten-3 material-icons" href="#" data-target="dropdown-{{ monitor._id }}">more_vert</i>
+              <ul id="dropdown-{{ monitor._id }}" class="dropdown-content">
+                <li><a href="#modal-update-monitor-{{ monitor._id }}" class="not-collapse modal-trigger blue-grey-text lighten-3">edit</a></li>
+                <li><a href="/monitor/{{ monitor._id }}/delete" class="blue-grey-text lighten-3">delete</a></li>
+              </ul></div></div>
+          <div class="collapsible-body">
+            <div class="row">
+              <div class="col s6 m3"><b>Name</b></div>
+              <div class="col s6 m3">{{ monitor.name }}</div>
+              <div class="col s6 m3"><b>Address</b></div>
+              <div class="col s6 m3">{{ monitor.address }}</div>
+              <div class="col s6 m3"><b>Is public?</b></div>
+              <div class="col s6 m3">{{ monitor.is_public }}</div>
+              <div class="col s6 m3"><b>Frequency</b></div>
+              <div class="col s6 m3">{{ monitor.frequency }} / day</div>
+            </div>
+          </div>
+        </li>
+        {% include "partials/_modal_update_monitor.njk" %}
+      {% endfor %}
+    </ul>
   {% else %}
     <div class="row center-align row--mg0">
       <span class="emoji grey-text">\(o_o)/</span>
