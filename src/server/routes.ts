@@ -4,6 +4,7 @@ import * as passport from 'passport';
 import {Context} from 'koa';
 import {Constants} from '../contants';
 import {login, loginCallback, logout} from '../controllers/authentication';
+import {dashboard} from '../controllers/dashboard';
 
 const router = new Router();
 
@@ -30,8 +31,6 @@ router.get(Constants.LOGIN_GOOGLE_CALLBACK_URL, isUnauthenticated, loginCallback
 router.get(Constants.LOGIN_GOOGLE_URL, isUnauthenticated, login);
 router.get(Constants.LOGOUT_URL, isAuthenticated, logout);
 
-router.get(Constants.DASHBOARD_URL, isAuthenticated, async (ctx) => {
-  await ctx.render('dash');
-});
+router.get(Constants.DASHBOARD_URL, isAuthenticated, dashboard);
 
 export const routes = router.routes();
