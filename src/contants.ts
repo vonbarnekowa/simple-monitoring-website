@@ -16,6 +16,7 @@ export class Constants {
   public static MONGODB_CONNECT_URL = 'mongodb://localhost/smw';
 
   // Messages
+  public static GENERIC_ERROR_MESSAGE = 'An error occurred';
   public static MONITOR_ADD_SUCCESS = 'Monitor added successfully';
   public static MONITOR_ADD_ERROR = 'Can\'t add this monitor';
   public static MONITOR_UPDATE_SUCCESS = 'Monitor updated successfully';
