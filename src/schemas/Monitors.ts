@@ -6,6 +6,7 @@ export const MonitorSchema = new mongoose.Schema({
   is_public: Boolean,
   address: String,
   frequency: Number,
+  status: Number,
   feedbacks: [{
     date: Date,
     is_up: Boolean,
