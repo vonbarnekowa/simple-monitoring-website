@@ -1,4 +1,4 @@
-import * as Koa from 'Koa';
+import * as Koa from 'koa';
 import * as passport from 'passport';
 import {Constants} from '../contants';
 
