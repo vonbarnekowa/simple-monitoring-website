@@ -1,10 +1,10 @@
 import * as Router from 'koa-router';
-import * as passport from 'passport';
 
 import {Context} from 'koa';
 import {Constants} from '../contants';
 import {login, loginCallback, logout} from '../controllers/authentication';
 import {dashboard} from '../controllers/dashboard';
+import {addMonitor, deleteMonitor, updateMonitor} from '../controllers/monitor';
 
 const router = new Router();
 
@@ -26,11 +26,16 @@ router.get(Constants.HOME_URL, isUnauthenticated, async (ctx) => {
   await ctx.render('home', {error: ctx.session.error});
 });
 
+router.get(Constants.DASHBOARD_URL, isAuthenticated, dashboard);
+
 // Authentication
 router.get(Constants.LOGIN_GOOGLE_CALLBACK_URL, isUnauthenticated, loginCallback);
 router.get(Constants.LOGIN_GOOGLE_URL, isUnauthenticated, login);
 router.get(Constants.LOGOUT_URL, isAuthenticated, logout);
 
-router.get(Constants.DASHBOARD_URL, isAuthenticated, dashboard);
+// Monitor controller
+router.post(Constants.ADD_MONITOR_URL, isAuthenticated, addMonitor);
+router.post(Constants.UPDATE_MONITOR_URL, isAuthenticated, updateMonitor);
+router.get(Constants.DELETE_MONITOR_URL, isAuthenticated, deleteMonitor);
 
 export const routes = router.routes();
