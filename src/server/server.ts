@@ -13,8 +13,10 @@ import {Profile} from 'passport';
 import {Constants} from '../contants';
 import {config} from './config';
 import {log} from './log';
+
 import {routes} from './routes';
 
+import {MonitorSchema} from '../schemas/Monitors';
 import {UsersSchema} from '../schemas/Users';
 
 const app = new Koa();
@@ -28,6 +30,7 @@ mongoose.connect(Constants.MONGODB_CONNECT_URL, {useNewUrlParser: true}, (err: m
 });
 
 const User = mongoose.model('users', UsersSchema);
+const Monitor = mongoose.model('monitors', MonitorSchema);
 
 const contents = fs.readFileSync('google_api.json');
 const googleApiInfo = JSON.parse(contents.toString());
