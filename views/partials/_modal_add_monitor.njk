@@ -1,0 +1,46 @@
+<div class="fixed-action-btn">
+  <a href="#modal-add-monitor" class="modal-trigger btn-floating btn-large waves-effect waves-light deep-purple darken-1"><i class="material-icons">add</i></a>
+</div>
+<div id="modal-add-monitor" class="modal">
+  <form action="/monitor/add" method="post">
+    <div class="modal-content">
+      <h4>Add a monitor</h4>
+      <div class="input-field">
+        <input id="name" name="name" type="text" class="input-field-purple">
+        <label class="deep-purple-text darken-1" for="name">Name</label>
+      </div>
+      <div class="input-field">
+        <input id="address" name="address" type="text" class="input-field-purple">
+        <label class="deep-purple-text darken-1" for="address">Address</label>
+      </div>
+      <div class="input-field">
+        <label class="range-label deep-purple-text darken-1" for="frequency">Checks per day</label>
+        <select id="frequency" name="frequency" class="input-field-purple browser-default">
+          <option value="1">Every 24h</option>
+          <option value="2">Every 12h</option>
+          <option value="4">Every 6h</option>
+          <option value="8">Every 3h</option>
+          <option value="16">Every 90'</option>
+          <option value="32">Every 45'</option>
+          <option value="48">Every 30'</option>
+          <option value="96">Every 15'</option>
+          <option value="144">Every 10'</option>
+          <option value="288">Every 5'</option>
+          <option value="1440">Every 1'</option>
+        </select>
+      </div>
+      <div class="input-field">
+        <div class="switch">
+          <label>
+            Is public
+            <input type="checkbox" name="is_public">
+            <span class="lever"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="waves-effect btn-flat deep-purple darken-1 white-text"><i class="material-icons">add</i></button>
+    </div>
+  </form>
+</div>

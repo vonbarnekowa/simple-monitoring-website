@@ -10,7 +10,5 @@
       <span class="emoji--text grey-text">Nothing to monitor</span>
     </div>
   {% endif %}
-  <div class="fixed-action-btn">
-    <a class="btn-floating btn-large waves-effect waves-light deep-purple darken-1"><i class="material-icons">add</i></a>
-  </div>
+  {% include "partials/_modal_add_monitor.njk" %}
 {% endblock %}
