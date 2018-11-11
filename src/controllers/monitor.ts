@@ -53,7 +53,7 @@ export const addMonitor = async (ctx: Koa.Context) => {
     isError = true;
   }
 
-  if (!isError && !allowedChecksPerDay.indexOf(parseInt(body.frequency, 10))) {
+  if (!isError && !(allowedChecksPerDay.indexOf(parseInt(body.frequency, 10)) > -1)) {
     ctx.session.error = Constants.FORM_ERROR_MESSAGE;
     isError = true;
   }
