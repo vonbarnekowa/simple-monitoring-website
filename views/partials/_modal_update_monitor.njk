@@ -11,7 +11,7 @@
         <label class="deep-purple-text darken-1" for="address">Address</label>
       </div>
       <div class="input-field">
-        <label class="range-label deep-purple-text darken-1" for="frequency">Checks per day</label>
+        <label class="range-label deep-purple-text darken-1" for="frequency">Checks</label>
         <select id="frequency" name="frequency" class="input-field-purple browser-default">
           <option value="1" {% if monitor.frequency == 1 %} selected{% endif %}>Every 24h</option>
           <option value="2" {% if monitor.frequency == 2 %} selected{% endif %}>Every 12h</option>
