@@ -78,7 +78,6 @@ export const addMonitor = async (ctx: Koa.Context) => {
         ctx.redirect(Constants.DASHBOARD_URL);
       });
   } else {
-    ctx.session.error = Constants.GENERIC_ERROR_MESSAGE;
     ctx.redirect(Constants.DASHBOARD_URL);
   }
 };
@@ -145,7 +144,6 @@ export const updateMonitor = async (ctx: Koa.Context) => {
         ctx.redirect(Constants.DASHBOARD_URL);
       });
   } else {
-    ctx.session.error = Constants.GENERIC_ERROR_MESSAGE;
     ctx.redirect(Constants.DASHBOARD_URL);
   }
 };
