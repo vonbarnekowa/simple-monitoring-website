@@ -2,7 +2,7 @@
   "name": "simple-monitoring-website",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
     "build": "tslint --project . && tsc",
     "watch-css": "node-sass --recursive -w ./style/ -o ./public/css/ --output-style compressed",
