@@ -1,8 +1,8 @@
 import * as Koa from 'koa';
 import * as mongoose from 'mongoose';
 import {Constants} from '../contants';
-import {log} from '../server/log';
 import {AgentSchema} from '../schemas/Agent';
+import {log} from '../server/log';
 
 const Agent = mongoose.model('agent', AgentSchema);
 
@@ -107,8 +107,9 @@ const getKey = () => {
   let text = '';
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  for (var i = 0; i < 24; i++)
+  for (let i = 0; i < 24; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
 
   return text;
 };

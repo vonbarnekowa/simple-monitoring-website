@@ -2,11 +2,11 @@ import * as Router from 'koa-router';
 
 import {Context} from 'koa';
 import {Constants} from '../contants';
+import {addAgent, deleteAgent, updateAgent} from '../controllers/agent';
 import {login, loginCallback, logout} from '../controllers/authentication';
 import {agent, dashboard} from '../controllers/dashboard';
 import {home} from '../controllers/home';
 import {addMonitor, deleteMonitor, updateMonitor} from '../controllers/monitor';
-import {addAgent, deleteAgent, updateAgent} from '../controllers/agent';
 
 const router = new Router();
 
