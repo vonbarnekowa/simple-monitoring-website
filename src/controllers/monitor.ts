@@ -7,7 +7,7 @@ import {log} from '../server/log';
 const Monitor = mongoose.model('monitors', MonitorSchema);
 const allowedChecksPerDay = [1, 2, 4, 8, 16, 32, 48, 144, 288, 1440];
 
-interface IAddMonitor {
+interface IMonitor {
   name: string;
   address: string;
   frequency: string;
@@ -16,7 +16,7 @@ interface IAddMonitor {
 
 export const addMonitor = async (ctx: Koa.Context) => {
   let isError = false;
-  const body = (ctx.request.body as IAddMonitor);
+  const body = (ctx.request.body as IMonitor);
 
   if (ctx.response == null) {
     ctx.session.error = Constants.GENERIC_ERROR_MESSAGE;
@@ -84,7 +84,7 @@ export const addMonitor = async (ctx: Koa.Context) => {
 
 export const updateMonitor = async (ctx: Koa.Context) => {
   let isError = false;
-  const body = (ctx.request.body as IAddMonitor);
+  const body = (ctx.request.body as IMonitor);
 
   if (ctx.response == null) {
     ctx.session.error = Constants.GENERIC_ERROR_MESSAGE;
