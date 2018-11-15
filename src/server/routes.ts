@@ -39,4 +39,9 @@ router.post(Constants.ADD_MONITOR_URL, isAuthenticated, addMonitor);
 router.post(Constants.UPDATE_MONITOR_URL, isAuthenticated, updateMonitor);
 router.get(Constants.DELETE_MONITOR_URL, isAuthenticated, deleteMonitor);
 
+// Agent controller
+router.post(Constants.ADD_AGENT_URL, isAuthenticated, addAgent);
+router.post(Constants.UPDATE_AGENT_URL, isAuthenticated, updateAgent);
+router.get(Constants.DELETE_AGENT_URL, isAuthenticated, deleteAgent);
+
 export const routes = router.routes();

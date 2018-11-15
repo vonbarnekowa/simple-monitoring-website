@@ -1,0 +1,14 @@
+<div id="modal-update-agent-{{ agent._id }}" class="modal">
+  <form action="/agent/{{ agent._id }}/update" method="post">
+    <div class="modal-content">
+      <h4>Update {{ agent.name }}</h4>
+      <div class="input-field">
+        <input id="name" name="name" type="text" value="{{ agent.name }}" class="input-field-purple">
+        <label class="deep-purple-text darken-1" for="name">Name</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="waves-effect btn-flat deep-purple darken-1 white-text">Update</button>
+    </div>
+  </form>
+</div>
