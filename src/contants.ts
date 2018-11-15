@@ -28,5 +28,11 @@ export class Constants {
   public static MONITOR_UPDATE_ERROR = 'Can\'t update this monitor';
   public static MONITOR_DELETE_SUCCESS = 'Monitor deleted successfully';
   public static MONITOR_DELETE_ERROR = 'Can\'t delete this monitor';
+  public static AGENT_ADD_SUCCESS = 'Agent added successfully';
+  public static AGENT_ADD_ERROR = 'Can\'t add this agent';
+  public static AGENT_UPDATE_SUCCESS = 'Agent updated successfully';
+  public static AGENT_UPDATE_ERROR = 'Can\'t update this monitor';
+  public static AGENT_DELETE_SUCCESS = 'Agent agent successfully';
+  public static AGENT_DELETE_ERROR = 'Can\'t delete this agent';
   public static FORM_ERROR_MESSAGE = 'The form wasn\'t correct';
 }
