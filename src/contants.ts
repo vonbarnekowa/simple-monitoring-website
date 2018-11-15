@@ -7,6 +7,7 @@ export class Constants {
   public static LOGOUT_URL = '/logout';
 
   public static DASHBOARD_URL = '/dashboard';
+  public static AGENT_URL = '/agent';
 
   public static ADD_MONITOR_URL = '/monitor/add';
   public static UPDATE_MONITOR_URL = '/monitor/:id/update';
