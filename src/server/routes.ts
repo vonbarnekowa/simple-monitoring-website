@@ -3,9 +3,10 @@ import * as Router from 'koa-router';
 import {Context} from 'koa';
 import {Constants} from '../contants';
 import {login, loginCallback, logout} from '../controllers/authentication';
-import {dashboard} from '../controllers/dashboard';
+import {agent, dashboard} from '../controllers/dashboard';
 import {home} from '../controllers/home';
 import {addMonitor, deleteMonitor, updateMonitor} from '../controllers/monitor';
+import {addAgent, deleteAgent, updateAgent} from '../controllers/agent';
 
 const router = new Router();
 
@@ -26,6 +27,7 @@ const isUnauthenticated = (ctx: Context, next: () => void) => {
 router.get(Constants.HOME_URL, isUnauthenticated, home);
 
 router.get(Constants.DASHBOARD_URL, isAuthenticated, dashboard);
+router.get(Constants.AGENT_URL, isAuthenticated, agent);
 
 // Authentication
 router.get(Constants.LOGIN_GOOGLE_CALLBACK_URL, isUnauthenticated, loginCallback);
