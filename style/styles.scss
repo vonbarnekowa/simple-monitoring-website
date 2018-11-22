@@ -19,6 +19,10 @@
   display: inherit;
 }
 
+.collapsible-body div div {
+  word-break: break-word;
+}
+
 .input-field label {
   left: 0 !important;
 }
