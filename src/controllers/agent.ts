@@ -1,12 +1,15 @@
+import * as jwt from 'jsonwebtoken';
 import * as Koa from 'koa';
 import * as mongoose from 'mongoose';
+
+import {Document} from 'mongoose';
 import {Constants} from '../contants';
 import {AgentSchema} from '../schemas/Agent';
 import {log} from '../server/log';
 
 const Agent = mongoose.model('agent', AgentSchema);
 
-interface IAgent {
+interface IAgent extends Document {
   name: string;
   key: string;
 }
@@ -31,9 +34,9 @@ export const addAgent = async (ctx: Koa.Context) => {
   }
 
   if (!isError) {
+
     await new Agent({
       name: body.name.trim(),
-      key: getKey(),
     })
       .save()
       .catch((error) => {
@@ -42,8 +45,21 @@ export const addAgent = async (ctx: Koa.Context) => {
         ctx.redirect(Constants.AGENT_URL);
       })
       .then((res) => {
-        ctx.session.success = Constants.AGENT_ADD_SUCCESS;
-        ctx.redirect(Constants.AGENT_URL);
+
+        const obj = {_id: (res as IAgent)._id, name: (res as IAgent).name};
+        const token = jwt.sign(obj, process.env.SECRET);
+
+        Agent.findOneAndUpdate({_id: (res as IAgent)._id}, {key: token})
+          .exec()
+          .catch((error) => {
+            log.error(error);
+            ctx.session.error = Constants.AGENT_ADD_ERROR;
+            ctx.redirect(Constants.AGENT_URL);
+          })
+          .then((result) => {
+            ctx.session.success = Constants.AGENT_ADD_SUCCESS;
+            ctx.redirect(Constants.AGENT_URL);
+          });
       });
   } else {
     ctx.redirect(Constants.AGENT_URL);
