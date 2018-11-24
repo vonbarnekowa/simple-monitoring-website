@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tslint --project . && tsc",
+    "build": "tslint --project . && tsc && node-sass --recursive ./style/ -o ./public/css/ --output-style compressed",
     "watch-css": "node-sass --recursive -w ./style/ -o ./public/css/ --output-style compressed",
     "watch": "cross-env NODE_ENV=development nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/server/server.ts"
   },
