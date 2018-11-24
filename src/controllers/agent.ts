@@ -42,7 +42,6 @@ export const addAgent = async (ctx: Koa.Context) => {
       .catch((error) => {
         log.error(error);
         ctx.session.error = Constants.AGENT_ADD_ERROR;
-        ctx.redirect(Constants.AGENT_URL);
       })
       .then((res) => {
 
@@ -54,16 +53,15 @@ export const addAgent = async (ctx: Koa.Context) => {
           .catch((error) => {
             log.error(error);
             ctx.session.error = Constants.AGENT_ADD_ERROR;
-            ctx.redirect(Constants.AGENT_URL);
           })
           .then((result) => {
             ctx.session.success = Constants.AGENT_ADD_SUCCESS;
-            ctx.redirect(Constants.AGENT_URL);
           });
       });
-  } else {
-    ctx.redirect(Constants.AGENT_URL);
   }
+  ctx.redirect(Constants.AGENT_URL);
+  ctx.session.success = null;
+  ctx.session.error = null;
 
 };
 
@@ -94,15 +92,14 @@ export const updateAgent = async (ctx: Koa.Context) => {
       .catch((error) => {
         log.error(error);
         ctx.session.error = Constants.AGENT_UPDATE_ERROR;
-        ctx.redirect(Constants.AGENT_URL);
       })
       .then((res) => {
         ctx.session.success = Constants.AGENT_UPDATE_SUCCESS;
-        ctx.redirect(Constants.AGENT_URL);
       });
-  } else {
-    ctx.redirect(Constants.AGENT_URL);
   }
+  ctx.redirect(Constants.AGENT_URL);
+  ctx.session.success = null;
+  ctx.session.error = null;
 };
 
 export const deleteAgent = async (ctx: Koa.Context) => {
@@ -111,12 +108,14 @@ export const deleteAgent = async (ctx: Koa.Context) => {
     .catch((error) => {
       log.error(error);
       ctx.session.error = Constants.AGENT_DELETE_ERROR;
-      ctx.redirect(Constants.AGENT_URL);
     })
     .then((doc) => {
       ctx.session.success = Constants.AGENT_DELETE_SUCCESS;
-      ctx.redirect(Constants.AGENT_URL);
     });
+
+  ctx.redirect(Constants.AGENT_URL);
+  ctx.session.success = null;
+  ctx.session.error = null;
 };
 
 const getKey = () => {
