@@ -35,7 +35,7 @@
       {% set is_up = 0 %}
       {% for feedback in monitor.feedbacks %}
         {% if feedback.is_up %}
-        {% set is_up = is_up + 1 %}
+          {% set is_up = is_up + 1 %}
         {% endif %}
       {% endfor %}
       <div class="col s6 m3">{{ ((is_up/(monitor.feedbacks | length)) * 100) | round(4) }} %</div>
