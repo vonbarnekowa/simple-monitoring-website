@@ -29,8 +29,16 @@
         <div class="col s6 m3"><b>Frequency</b></div>
         <div class="col s6 m3">{{ monitor.frequency }} times per day</div>
       {% endif %}
-        <div class="col s6 m3"><b>Last check</b></div>
-        <div class="col s6 m3">{{ (monitor.feedbacks | last).date }} </div>
+      <div class="col s6 m3"><b>Last check</b></div>
+      <div class="col s6 m3">{{ (monitor.feedbacks | last).date }} </div>
+      <div class="col s6 m3"><b>Uptime</b></div>
+      {% set is_up = 0 %}
+      {% for feedback in monitor.feedbacks %}
+        {% if feedback.is_up %}
+        {% set is_up = is_up + 1 %}
+        {% endif %}
+      {% endfor %}
+      <div class="col s6 m3">{{ ((is_up/(monitor.feedbacks | length)) * 100) | round(4) }} %</div>
     </div>
   </div>
 </li>
