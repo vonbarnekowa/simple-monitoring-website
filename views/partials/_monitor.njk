@@ -29,6 +29,8 @@
         <div class="col s6 m3"><b>Frequency</b></div>
         <div class="col s6 m3">{{ monitor.frequency }} times per day</div>
       {% endif %}
+        <div class="col s6 m3"><b>Last check</b></div>
+        <div class="col s6 m3">{{ (monitor.feedbacks | last).date }} </div>
     </div>
   </div>
 </li>
